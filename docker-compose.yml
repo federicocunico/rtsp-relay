@@ -1,25 +1,23 @@
-version: '3.7'
-
+version: '3'
 services:
-
   rtsp-relay:
     image: flaviostutz/rtsp-relay
     ports:
-        - 8554:8554
+      - "8554:8554"
     environment:
-        - SOURCE_URL=file:///samples/test.mp4
-        - STREAM_NAME=test
-        - FFMPEG_OUTPUT_ARGS=-vcodec h264
+      - SOURCE_URL=file:///samples/test.mp4
+      - STREAM_NAME=test
+      - FFMPEG_OUTPUT_ARGS=-vcodec h264
     volumes:
-        - ./samples:/samples
+      - ./samples:/samples
     networks:
-        app_net:
-            ipv4_address: 174.17.0.1
+      app_net:
+        ipv4_address: 173.18.0.1
 
 networks:
-    app_net:
-        driver: bridge
-        ipam:
-        driver: default
-        config:
-            - subnet: 174.17.0.0/16
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 173.18.0.0/16
